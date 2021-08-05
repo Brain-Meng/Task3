@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+<!--    <link rel="stylesheet" href="css/bootstrap.css">-->
+<!--    <script src="js/bootstrap.js"></script>-->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>
+</head>
+<body>
+<div class="container-fluid">
+    <div class="row-fluid">
+        <div class="span12">
+            <div th:include="header::topHeader"></div>
+            <div>
+            <table class="table">
+                <thead>
+                <tr>
+                    <th>姓名</th>
+                    <th>性别</th>
+                    <th>年龄</th>
+                    <th>科目</th>
+                    <th>操作</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr class="info" th:each="people: ${list}">
+                    <td th:text="${people.people_name}"></td>
+                    <td th:text="${people.people_sex}"></td>
+                    <td th:text="${people.people_age}"></td>
+                    <td th:text="${people.people_subject}"></td>
+                    <td>
+                        <span sec:authorize="hasAuthority('menu3')">
+                            <a th:href="@{'/toUpdate/'+${people.id}}">更新</a>
+                        </span> |
+                        <span sec:authorize="hasAuthority('menu3')">
+                            <a th:href="@{'/delete/'+${people.id}}">删除</a>
+                        </span>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

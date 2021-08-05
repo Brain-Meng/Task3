@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <!--    <link rel="stylesheet" href="../css/bootstrap.css">-->
+    <!--    <script src="../js/bootstrap.js"></script>-->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>
+</head>
+<body>
+<div class="container-fluid">
+    <div class="row-fluid">
+        <div class="span12">
+            <div th:include="header::topHeader"></div>
+            <div>
+                <form class="form-horizontal" style="margin-left: 20%" action="/update/" method="post" th:object="${people}">
+                    <div class="form-group" align="center">
+                        <input type="text" th:value="*{id}" name="id" class="form-control hidden"  th:placeholder="${people.id}" >
+                        <label class="col-sm-2 control-label">姓名</label>
+                        <div class="col-xs-5">
+                            <input type="text" th:value="*{people_name}" name="people_name" class="form-control"  th:placeholder="${people.people_name}">
+                        </div>
+                    </div>
+                    <div class="form-group" align="center">
+                        <label class="col-sm-2 control-label">性别</label>
+                        <div class="col-xs-5">
+                            <input type="text" th:value="*{people_sex}" name="people_sex" class="form-control"  th:placeholder="${people.people_sex}">
+                        </div>
+                    </div>
+                    <div class="form-group" align="center">
+                        <label class="col-sm-2 control-label">年龄</label>
+                        <div class="col-xs-5">
+                            <input type="text" th:value="*{people_age}" name="people_age" class="form-control"  th:placeholder="${people.people_age}">
+                        </div>
+                    </div>
+                    <div class="form-group" align="center">
+                        <label class="col-sm-2 control-label">科目</label>
+                        <div class="col-xs-5">
+                            <input type="text" th:value="*{people_subject}" name="people_subject" class="form-control" th:placeholder="${people.people_subject}">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-offset-2 col-sm-10">
+                            <button type="submit" class="btn btn-default">添加</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
